@@ -27,7 +27,8 @@ class ClassDef(object):
         self._map = None
 
     def loadFromFontTools(self, classDef):
-        self.ClassFormat = classDef.Format
+        if hasattr(classDef, "Format"):
+            self.ClassFormat = classDef.Format
         self._map = dict(classDef.classDefs)
         return self
 

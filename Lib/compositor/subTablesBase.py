@@ -459,7 +459,8 @@ class Coverage(object):
         if isinstance(coverage, list):
             self.CoverageFormat = 1
         else:
-            self.CoverageFormat = coverage.Format
+            if hasattr(coverage, "Format"):
+                self.CoverageFormat = coverage.Format
             coverage = coverage.glyphs
         self._glyphs = list(coverage)
         return self
